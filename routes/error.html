@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objetivo TvOS</title>
+    <link rel="stylesheet" href="../src/css/public/style.css">
+    <link rel="stylesheet" href="../src/css/public/loading_animation.css">
+    <link rel="stylesheet" href="../src/css/public/scrollbar.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+</head>
+
+
+<body class="bg-indigo-200 md:bg-white h-screen" style="font-family: Nunito;">
+    <div class="w-full h-screen md:w-1/2 flex flex-col">
+        <div class="flex justify-center md:justify-start pt-6 md:pl-12 md:-mb-24">
+            <img style="height: 40px;" src="../assets/logos/logo_objetivo_rioclaro.png" alt="Objetivo TvOS">
+        </div>
+        <div
+            class="flex flex-col items-center justify-start">
+            <div class="flex flex-row items-center text-black text-[4rem] md:text-[9rem] font-black">
+                    <span id="text_status"></span>
+                </div>
+                <div class="w-16 h-1 bg-indigo-500 md:my-6"></div>
+                <p id="text_message" class="text-[#606F7B] text-2xl md:text-3xl font-light mb-8 leading-normal"></p>
+                <div class="mt-[15px]">
+                    <p id="text_name" class="text-xl text-gray-700"></p>
+                    <p id="text_description" class="text-xl text-gray-700"></p>
+                </div>
+        </div>
+    </div>
+    <script type="module">
+        import { Application } from '../src/class/__instance_application.js';
+
+        document.getElementById('text_status').innerHTML = sessionStorage.getItem('Exception_Status');
+        document.getElementById('text_message').innerHTML = sessionStorage.getItem('Exception_Message');
+
+        let application = new Application();
+
+        if (application.SLMP()) {
+            if (sessionStorage.getItem('Exception_ERROR_Name') && sessionStorage.getItem('Exception_ERROR_Message')) {
+                document.getElementById('text_name').innerHTML = `<strong class="font-bold">Instâncias: </strong>${sessionStorage.getItem('Exception_ERROR_Name')}`;
+                document.getElementById('text_description').innerHTML = `<strong class="font-bold">Descrição: </strong>${sessionStorage.getItem('Exception_ERROR_Message')}`;
+            }
+        }
+
+        document.addEventListener("keydown", function (event) {
+            if (event.ctrlKey && (event.which === 82)) {
+                event.preventDefault();
+                console.log("Deu certo");
+                application.restartApp();
+            }
+        })
+    </script>
+</body>
+
+</html>

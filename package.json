@@ -1,0 +1,63 @@
+{
+    "name": "objetivo-tv-os",
+    "version": "1.0.0",
+    "isBeta": false,
+    "description": "",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron-forge start",
+        "build-css": "npx tailwindcss -o src/css/public/style.css --minify",
+        "dev-css": "tailwindcss -i src/css/resource/style.css -o src/css/public/style.css",
+        "watch-css": "tailwindcss -i src/css/resource/style.css -o src/css/public/style.css --watch",
+        "package": "electron-forge package",
+        "make-win": "electron-forge make --arch=ia32,x64",
+        "deploy-win": "electron-forge publish --arch=ia32,x64",
+        "make-linux": "electron-forge make --arch=x64",
+        "deploy-linux": "electron-forge publish --arch=x64",
+        "make-apple": "electron-forge make --arch=all",
+        "deploy-apple": "electron-forge publish --arch=all"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jvneto/objetivo-tv-os.git"
+    },
+    "author": "Julio Cesar <60150667+jvneto@users.noreply.github.com>",
+    "license": "GPL-3.0-or-later",
+    "bugs": {
+        "url": "https://github.com/jvneto/objetivo-tv-os/issues"
+    },
+    "homepage": "https://github.com/jvneto/objetivo-tv-os#readme",
+    "config": {
+        "forge": "./forge.config.js"
+    },
+    "dependencies": {
+        "axios": "^0.21.4",
+        "electron-log": "^4.4.7",
+        "electron-osx-sign": "^0.6.0",
+        "electron-squirrel-startup": "^1.0.0",
+        "electron-updater": "^4.3.8",
+        "extend-shallow": "^3.0.2",
+        "electron-window-manager": "^1.0.6",
+        "electron-windows-store": "^2.1.0",
+        "jquery": "^3.6.0"
+    },
+    "devDependencies": {
+        "electron": "^25.2.0",
+        "@electron-forge/cli": "^6.0.0-beta.63",
+        "@electron-forge/maker-deb": "^6.0.0-beta.63",
+        "@electron-forge/maker-pkg": "^6.0.0-beta.63",
+        "@electron-forge/maker-rpm": "^6.0.0-beta.63",
+        "@electron-forge/maker-squirrel": "^6.0.0-beta.63",
+        "@electron-forge/maker-zip": "^6.0.0-beta.63",
+        "@electron-forge/publisher-github": "^6.0.0-beta.63",
+        "@electron-forge/maker-appx": "^6.0.0-beta.63",
+        "@electron-forge/maker-dmg": "^6.0.0-beta.63",
+        "@tailwindcss/typography": "^0.5.2",
+        "autoprefixer": "^10.4.2",
+        "electron-notarize": "^1.1.1",
+        "electron-reloader": "^1.2.1",
+        "postcss": "^8.4.5",
+        "tailwind-scrollbar": "^1.3.1",
+        "tailwindcss": "^3.0.15"
+    }
+}
